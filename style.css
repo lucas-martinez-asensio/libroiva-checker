@@ -35,6 +35,10 @@ height: 72vh
     font-size: 1.2rem !important;
 }
 
+.number-form:focus{
+    box-shadow:  10rem 10rem 10rem 10rem rgb(28, 1, 46)inset, 0px 0px 0px 1.7px  rgb(255, 255, 255) !important;
+    outline: 0 none;
+}
 
 .container {
     margin-left: 10rem !important;
@@ -63,7 +67,7 @@ height: 72vh
 
 .glass-cont {
     height: auto;
-    width: 22rem;
+    width: 20rem;
     display: flex;
     flex-wrap: wrap;
     background-image: linear-gradient(

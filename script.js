@@ -75,24 +75,28 @@ function takeData() {
                     if (difference < 100 && (data[i][1] === data[i + 1][1])) {
                        
                         if (difference === 2) {
-                            missing[k] = `Comprobante faltante: ${parseInt(data[i][0]) + 1}, ${data[i][1]}`;
+                            missing[k] = `Comprobante faltante:  ${data[i][1]} ${parseInt(data[i][0]) + 1} <br>`;
                             k++;
                            
                         } else {
-                            missing[k] = `
-                            Varios faltantes desde: ${data[i]}`;
+                            missing[k] = `Varios faltantes desde: ${data[i][1]} ${parseInt(data[i][0])} <br>`;
                             k++;
                         }
                     }
                 }
             } else {
-                duplicates[j] = `Comprobante duplicado: ${data[i]}`;
-                j++;
+                if (data[i][1] === data[i + 1][1]) {
+                    duplicates[j] = `Comprobante duplicado: ${data[i][1]} ${parseInt(data[i][0])} <br>`;
+                    j++;
+                }
             }
         }
-        console.log(duplicates)
-        console.log(missing + duplicates)
-        return missing + duplicates;
+
+
+        let result = missing.concat(duplicates);
+        
+        console.log(result)
+        return result;
     }
     
     let processedNumber = Process(numbers,'-');
@@ -103,9 +107,22 @@ function takeData() {
     console.log(sortedInvoice);
     let searchedInvoice = SearchDuplicatesMissing(sortedInvoice); 
     
-    console.log(searchedInvoice)
-    console.log(typeof(searchedInvoice))
-    
+
+    console.log(processedNumber)
+    console.log()
+    if (searchedInvoice.length === 0 && processedNumber[0] === '' && processedType[0] === '' ) {
+        searchedInvoice = 'No ingresaste ningún dato'
+    } else if (searchedInvoice.length === 0 && processedNumber[0] === '') {
+        searchedInvoice = 'No ingresaste numeración de comprobante'
+    }
+    else {
+        if (searchedInvoice.length === 0) {
+            searchedInvoice = `Este Libro IVA es una maravilla. No existen faltantes, ni duplicados`
+        } else {
+            searchedInvoice = searchedInvoice.join(`
+            `);
+        }
+    }
 
     let resultDiv = document.getElementById('result')
     resultDiv.innerHTML = searchedInvoice
