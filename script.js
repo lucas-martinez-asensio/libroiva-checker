@@ -82,7 +82,7 @@ function takeData() {
                     
                     if (difference > 1) {
                         console.log('difference>1')
-                        if (data[i][1] === data[i + 1][1]) {// luego probar pasar esta condicion en la anterior
+                        if (difference < 100 && data[i][1] === data[i + 1][1]) {// luego probar pasar esta condicion en la anterior
                             console.log('type==type')
                             if (difference === 2) {
                                 console.log('difference==2')
@@ -94,21 +94,21 @@ function takeData() {
                                 k++;
                             }
                         } else {
-                            let bFinded = 0;
+                            // let bFinded = 0;
                             
-                            console.log('else !=type')
-                            for (let j = i; j < data.length - 1; j++) {
-                                if (data[i][0] + 1 === data[j][0] && data[i][1] + 1 === data[j][1] ) {
-                                    bFinded = 1;
-                                }
-                                if (!bFinded) {
+                            // console.log('else !=type')
+                            // for (let j = i; j < data.length - 1; j++) {
+                            //     if (data[i][0] + 1 === data[j][0] && data[i][1] + 1 === data[j][1] ) {
+                            //         bFinded = 1;
+                            //     }
+                            //     if (!bFinded) {
                                     
-                                    console.log('faltante bfind')
-                                        missing[k] = `Comprobante faltante:  ${data[i][1]} ${parseInt(data[i][0]) + 1} <br>`;
-                                        k++;
-                                        console.log(data[i], data[j])
-                                }
-                            }
+                            //         console.log('faltante bfind')
+                            //             missing[k] = `Comprobante faltante:  ${data[i][1]} ${parseInt(data[i][0]) + 1} <br>`;
+                            //             k++;
+                            //             console.log(data[i], data[j])
+                            //     }
+                            // }
                         }
                     } 
                     // else if (difference === 1 && data[i][1] !== data[i + 1][1]) {
