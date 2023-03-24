@@ -16,9 +16,18 @@ font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
 color: rgb(255, 249, 249);
 font-size: 1.1rem !important;
 }
-  
+
+
+.alien {
+    position: absolute;
+    width: 2rem;
+    margin-top: 0.5rem;
+    margin-left: 0.5rem;
+}
+
+
 .forms_container {
-margin-top: 2rem;
+margin-top: 0.5rem;
 width: 15vw;
 align-items: center;
 justify-content: center;
@@ -26,13 +35,49 @@ text-align: center;
 height: 72vh
 }
 
+.first-check {
+    /* margin-top: 2rem; */
+}
 
+.form-check {
+    /* margin-left: 82vw; */
+}
+
+.glass-cont a {
+    text-decoration: none;
+    color: #dbda98;
+  }
+
+.check {
+    font-family: "VT323", Verdana, sans-serif;
+    color: rgb(255, 249, 249);
+    font-size: 1.1rem;
+}
+
+.form-check-input {
+    box-shadow:  10rem 0.10rem 2rem 0.10rem rgba(0, 0, 0, 0.918)inset, 0px 0px 0px 0px  rgb(255, 255, 255) !important;
+}
+
+.form-check-input:checked {
+    box-shadow:  1rem 1rem 1rem 1rem rgb(190, 121, 255)inset, 0px 0px 0px 0px  rgb(255, 255, 255) !important;
+    border:  rgb(153, 0, 255);
+
+}
+
+.tooltip-style {
+    text-decoration: none;
+    color: aliceblue;
+}
 
 .number-form {
     height: 60vh;
     background-color: rgba(0, 0, 0, 0.308) !important;
     color: rgb(255, 255, 255) !important;
     font-size: 1.2rem !important;
+}
+
+.number-form::placeholder {
+    color: rgb(114, 108, 122) !important;
 }
 
 .number-form:focus{
@@ -48,13 +93,14 @@ height: 72vh
 }
 
 .forms_container-result {
-    margin-top: 2rem;
+    margin-top: 0.5rem;
     width: 25vw;
     align-items: center;
     justify-content: center;
     text-align: center;
     height: 72vh
 }
+
 
 .result-label {
     width: 100% !important;
