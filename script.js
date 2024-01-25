@@ -14,7 +14,7 @@ function Simple() {
         
         return dataReplacedFirst;
     }
-    
+
     function Sort(data, dataBis) {
         let mergeData = [];
     
@@ -81,7 +81,7 @@ function Simple() {
                     
                     if (difference > 1) {
                         console.log('difference>1' + i)
-                        if (difference < 100 && data[i][1] === data[i + 1][1]) {// luego probar pasar esta condicion en la anterior
+                        if (difference < 100 && data[i][1] === data[i + 1][1]) {
                             console.log('type==type')
                             if (difference === 2) {
                                 console.log('difference==2')
@@ -93,71 +93,7 @@ function Simple() {
                                 k++;
                             }
                         }
-                        //  else if (difference > 1 && data[i][1] !== data[i + 1][1]) { // trabajar desde acá CONSUME EXCESIVOS RECURSOS
-                        //     console.log('caso donde existe un faltante pero no es el consecutivo ya que está enmascarado por otros del mismo tipo' + i)
-                        //     let bPossibleConsecutive = 0;
-                        //     let bFindedConsecutive = 0;
-                        //     let possibles = [];
-                        //     for (let j = i + 1; j < data.length; j++) {
-                        //         if ((data[j][0] - data[i][0]) < 100000000 && data[i][1] === data[j][1]) {
-                        //             console.log(data[j])
-                        //             possibles.push(data[j])
-                        //             bPossibleConsecutive = 1;
-                        //         }
-                        //     }
-                        //     console.log(possibles)
-                        //     if (bPossibleConsecutive) { // hay posibles del mismo pv y tipo de comprob.
-                        //         console.log('posible consecutivo')
-                        //         for (let l = 0; l < possibles.length; l++) {
-                        //             console.log(data[i], possibles[l])
-                        //             if ((parseInt(data[i][0]) + 1) == parseInt(possibles[l][0])) {
-                        //                 console.log(data[i], possibles[l])
-                        //                 console.log('busca consecutivo')
-                        //                 bFindedConsecutive=1
-                        //             }
-                        //             if (!bFindedConsecutive) {
-                        //                 console.log('faltante bfind 2') // MUESTRA QUE HAY UN FALTANTE PERO NO SI ES UNO O VARIOS E IMPRIME VARIAS VECES A PESAR DE SER UN SOLO FALTANTE
-                        //                 missing[k] = `Varios faltantes desde:  ${data[i][1]} ${parseInt(data[i][0]) + 1} <br>`;
-                        //                 k++;
-                        //             } else { // CASO DONDE EXISTEN 1 FB, 2 FA, 2 FB, 3FB  a pesar del siguiente no ser el consecutivo tiene que confirmar si después está ya que por ordenamiento de tipo puede situar una FB  después de una FA, dando un falso negativo. Con esto se corrige 
-                        //                 console.log('consecutivo encontrado')
-                        //             }
-                        //         }
-                        //     }
-                        // }
                     } 
-                    // else if (difference === 1 && data[i][1] !== data[i + 1][1]) { 
-                    //     console.log(' CASO DONDE EXISTE UN COMPROBANTE DE OTRO TIPO CON MISMA NUMERACION QUE UN FALTANTE ENMASCARANDO EL FALTANTE')
-                    //     let bPossibleConsecutive = 0;
-                    //     let bFindedConsecutive = 0;
-                    //     let possibles = [];
-                    //     for (let j = i + 1; j < data.length; j++) {
-                    //         if ((data[j][0] - data[i][0]) < 100000000 && data[i][1] === data[j][1]) {
-                    //             console.log(data[j])
-                    //             possibles.push(data[j])
-                    //             bPossibleConsecutive = 1;
-                    //         }
-                    //     }
-                    //     console.log(possibles)
-                    //     if (bPossibleConsecutive) { // hay posibles del mismo pv y tipo de comprob.
-                    //         console.log('posible consecutivo')
-                    //         for (let l = 0; l < possibles.length; l++) {
-                    //             console.log(data[i], possibles[l])
-                    //             if ((parseInt(data[i][0]) + 1) == parseInt(possibles[l][0])) { // SEGUIR ACÁ !!!
-                    //                 console.log(data[i], possibles[l])
-                    //                 console.log('busca consecutivo')
-                    //                 bFindedConsecutive=1
-                    //             }
-                    //             if (!bFindedConsecutive) {
-                    //                 console.log('faltante bfind 3')
-                    //                 missing[k] = `Comprobante faltante:  ${data[i][1]} ${parseInt(data[i][0]) + 1} <br>`;
-                    //                 k++;
-                    //             } else { // CASO DONDE EXISTEN 1 FB, 2 FA, 2 FB, 3FB  a pesar del siguiente no ser el consecutivo tiene que confirmar si después está ya que por ordenamiento de tipo puede situar una FB  después de una FA, dando un falso negativo. Con esto se corrige 
-                    //                 console.log('consecutivo encontrado')
-                    //             }
-                    //         }
-                    //     }
-                    // }
                 } else {
                     if (data[i][1] === data[i + 1][1]) {
                         duplicates[j] = `Comprobante duplicado: ${data[i][1]} ${parseInt(data[i][0])} <br>`;
