@@ -1,23 +1,20 @@
 function Simple() {
-    let numbers = document.getElementById('numbersTextarea').value;
-    let type = document.getElementById('typeTextarea').value;
-    console.log(numbers + type)
 
     function Process(data, replaced) {
         dataSplited = data.split('\n');
         
         let dataReplacedFirst = [];
-    
+        
+        dataSplited.forEach((element, index) => dataReplacedFirst[index] = element.replace(replaced, ''));/*
         for (let i = 0; i < dataSplited.length; i++) {
             dataReplacedFirst[i] = dataSplited[i].replace(replaced, '');
-        }
+        }*/
         
         return dataReplacedFirst;
     }
 
     function Sort(data, dataBis) {
         let mergeData = [];
-    
         for (let i = 0; i < dataBis.length; i++) {
             
             if (dataBis[i] === 'FACTURA B ' || dataBis[i] === 'FACTURA A ' || dataBis[i] === 'FACTURA C ') {
@@ -30,7 +27,6 @@ function Simple() {
                 dataBis[i] = dataBis[i].replace('NOTA DE DÉBITO ', 'ND');
             }
         }
-    
         
         let size = data.length;
         let gapSize = Math.floor((size) / 2);
@@ -110,6 +106,10 @@ function Simple() {
         return result;
     }
     
+    let numbers = document.getElementById('numbersTextarea').value;
+    let type = document.getElementById('typeTextarea').value;
+    console.log(numbers + type)
+
     let processedNumber = Process(numbers,'-');
     let processedType = Process(type,'');
     console.log(processedNumber);
@@ -142,10 +142,6 @@ No existen faltantes, ni duplicados`
 }
 
 function Exhaust() {
-    let numbers = document.getElementById('numbersTextarea').value;
-    let type = document.getElementById('typeTextarea').value;
-    console.log(numbers + type)
-
     function Process(data, replaced) {
         dataSplited = data.split('\n');
         
@@ -183,6 +179,10 @@ function Exhaust() {
         let j = 0;
         let k = 0;
         
+        // data.forEach((invoice,index) => {
+        //         console.log(invoice, index, invoice[index + 1], invoice[index][0]);
+        // });
+
         for (let i = 0; i < data.length - 1; i++) {
             if (data[i]) {
                 let difference = data[i + 1][0] - data[i][0];
@@ -191,7 +191,7 @@ function Exhaust() {
                     
                     if (difference > 1) {
 
-                        if (difference < 100 && data[i][1] === data[i + 1][1]) {// luego probar pasar esta condicion en la anterior
+                        if (difference < 100 && data[i][1] === data[i + 1][1]) {
 
                             if (difference === 2) {
 
@@ -202,7 +202,6 @@ function Exhaust() {
                                 missing[k] = `Varios faltantes desde: ${data[i][1]} ${parseInt(data[i][0])} <br>`;
                                 k++;
                             }
-                        } else {
                         }
                     } 
                 } else {
@@ -236,21 +235,27 @@ function Exhaust() {
                 dataBis[i] = dataBis[i].replace('NOTA DE DÉBITO ', 'ND');
             }
         }
-    
+        // dataBis = dataBis.map(type => {
+        //     type = type.replace('FACTURA ', 'F');
+        //     type = type.replace('NOTA DE CRÉDITO ', 'NC');
+        //     type = type.replace('NOTA DE DÉBITO ', 'ND');
+        // });
+        // for (let i = 0; i < dataBis.length; i++) {
+        //         dataBis[i] = dataBis[i].replace('FACTURA ', 'F');
+        //         dataBis[i] = dataBis[i].replace('NOTA DE CRÉDITO ', 'NC');
+        //         dataBis[i] = dataBis[i].replace('NOTA DE DÉBITO ', 'ND');
+        // }
+        
         for (let i = 0; i < data.length; i++) {
             if (data[i] || dataBis[i]) {
                 mergeData[i] = [data[i], dataBis[i]];   
             }
         }
-        for (let i = 0; i < mergeData.length; i++) {
-            if (!mergeData[i]) {
-                mergeData.splice(i, 1);
-                i--;
-            }
-            
-        }
+        mergeData = mergeData.filter(element => element !== undefined && element !== null);
+
 
         console.log(data, dataBis)
+        console.log(mergeData)
 
         let resultData = [];
 
@@ -303,21 +308,23 @@ function Exhaust() {
     
     }
     
+    console.log(typeof(document.getElementById('numbersTextarea').value));
 
-
-
+    let numbers = document.getElementById('numbersTextarea').value;
+    let type = document.getElementById('typeTextarea').value;
+    console.log(numbers + type)
 
     
     let processedNumber = Process(numbers,'-');
     let processedType = Process(type,'');
-
     console.log(processedNumber);
     console.log(processedType);
+    console.time()
     let sortedInvoice = Merge(processedNumber, processedType, Sort);
+    console.timeEnd()
+
 
     console.log(sortedInvoice);
-    
-
     if (processedNumber.length === 1 && processedType.length === 1 && processedNumber === [''] && processedType === [''] ) {
         sortedInvoice = 'No ingresaste ningún dato'}
     else {
