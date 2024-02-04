@@ -191,7 +191,7 @@ function Exhaust() {
                     
                     if (difference > 1) {
 
-                        if (difference < 100 && data[i][1] === data[i + 1][1]) {
+                        if (difference < 1000000 && data[i][1] === data[i + 1][1]) {
 
                             if (difference === 2) {
 
